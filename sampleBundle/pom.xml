@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.mike.felix2.bundle</groupId>
+    <artifactId>sampleBundle</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+<!--
+    <packaging>jar</packaging>
+-->
+    <packaging>bundle</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <project.build.private.package>ru.mike.felix2.bundle</project.build.private.package>
+        <project.build.bundle.symbolicname>${project.artifactId}</project.build.bundle.symbolicname>
+        <project.build.bundle.name>${project.name}</project.build.bundle.name>
+        <project.build.bundle.version>1.0.0</project.build.bundle.version>
+        <project.build.bundle.activator>ru.mike.felix2.bundle.SampleActivator</project.build.bundle.activator>
+        <project.build.export.package>ru.mike.felix2.bundle</project.build.export.package>
+        <!--
+                <project.build.import.package>org.osgi.framework</project.build.import.package>
+        -->
+        <!--
+                <project.build.import.package>ru.mike.felix.common</project.build.import.package>
+        -->
+        <!--
+                <project.build.bundle.classpath></project.build.bundle.classpath>
+                <project.build.web.contextpath></project.build.web.contextpath>
+                <project.build.embed.dependency></project.build.embed.dependency>
+                <project.build.embed.directory></project.build.embed.directory>
+                <project.build.embed.transitive></project.build.embed.transitive>
+        -->
+        <!--
+                <manifestFolder>src/main/resources/META-INF</manifestFolder>
+                <manifestFile>${manifestFolder}/MANIFEST.MF</manifestFile>
+        -->
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.main</artifactId>
+            <version>5.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.mike.felix2.common</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>sampleBundle</finalName>
+        <plugins>
+            <!-- this is needed to enable reference in the Manifest file to Embedded libraries -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>3.2.0</version>
+                <configuration>
+<!--
+                    <packaging>bundle</packaging>
+-->
+                    <instructions>
+                        <Private-Package>${project.build.private.package}</Private-Package>
+                        <Bundle-SymbolicName>${project.build.bundle.symbolicname}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.build.bundle.name}</Bundle-Name>
+                        <Bundle-Version>${project.build.bundle.version}</Bundle-Version>
+                        <Bundle-Activator>${project.build.bundle.activator}</Bundle-Activator>
+                        <Import-Package>org.osgi.framework,ru.mike.felix2.common</Import-Package>
+                        <Export-Package>${project.build.export.package}</Export-Package>
+
+                        <!--
+                                                <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+                                                <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                                                <Embed-StripVersion>true</Embed-StripVersion>
+                        -->
+                        <!--
+                                                <Embed-Directory>{maven-dependencies}</Embed-Directory>
+                        -->
+                        <!--
+                                                <Private-Package>${project.build.private.package}</Private-Package>
+                                                <Web-ContextPath>${project.build.web.contextpath}</Web-ContextPath>
+                                                <Webapp-Context>${project.build.web.contextpath}</Webapp-Context>
+                                                <Bundle-ClassPath>${project.build.bundle.classpath}</Bundle-ClassPath>
+                                                <Embed-Dependency>${project.build.embed.dependency}</Embed-Dependency>
+                                                <Embed-Directory>${project.build.embed.directory}</Embed-Directory>
+                                                <Embed-Transitive>${project.build.embed.transitive}</Embed-Transitive>
+                        -->
+                    </instructions>
+<!--
+                    <supportedProjectTypes>
+                        <supportedProjectType>jar</supportedProjectType>
+                        <supportedProjectType>bundle</supportedProjectType>
+                    </supportedProjectTypes>
+-->
+                </configuration>
+<!--
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>bundle-package</id>
+                        <phase>package</phase>
+                        <configuration>
+
+                        </configuration>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+-->
+            </plugin>
+        </plugins>
+    </build>
+</project>

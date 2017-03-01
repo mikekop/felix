@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1488281634630
+Build-Jdk: 1.8.0_121
+Built-By: mkopylov
+Bundle-Activator: ru.mike.felix2.bundle.SampleActivator
+Bundle-ManifestVersion: 2
+Bundle-Name: sampleBundle
+Bundle-SymbolicName: sampleBundle
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: ru.mike.felix2.bundle;version="1.0.0";uses:="org.osgi.fr
+ amework,ru.mike.felix2.common"
+Import-Package: org.osgi.framework;version="[1.8,2)",ru.mike.felix2.comm
+ on
+Originally-Created-By: Apache Maven Bundle Plugin
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.5))"
+Tool: Bnd-3.2.0.201605172007
